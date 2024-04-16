@@ -1,5 +1,5 @@
 # MoonPlus
-A Roblox plugin that allows you to mod Moon Animator 2.<br><br>
+A Roblox plugin that modifies Moon Animator 2.<br><br>
 
 # Scripting
 
@@ -9,6 +9,7 @@ local MoonPlus = _g.MoonPlus
 ```
 
 ## Functions
+If you wanna add your own mod, these are some functions that might help.<br><br>
 
 ### MoonPlus.wfv()
 ```lua
@@ -17,7 +18,7 @@ MoonPlus.wfv(
   tbl: { any }
 ) -> tbl[index] -- wfv = WaitForVariable
 ```
-Waits for a variable in a table.
+Waits for a variable in a table.<br><br>
 
 ### MoonPlus.hookfunction()
 ```lua
@@ -28,4 +29,34 @@ MoonPlus.hookfunction(
   hooktype: "before" | "after"
 ) -> any
 ```
-Changes a function inside a table.
+Changes a function inside a table, example:
+```lua
+local t = {}
+t.func = function(arg)
+  print("original called,", arg)
+  return arg + 6
+end
+
+print( t.func(4) )
+-- the line above will output "original called, 4", then "10"
+
+MoonPlus.hookfunction(
+  t, "func",
+  function(arg)
+    return arg * 2
+  end,
+  "before"
+)
+
+MoonPlus.hookfunction(
+  t, "func",
+  function(arg)
+    print("returned", arg)
+    return arg
+  end,
+  "after"
+)
+
+print( t.func(4) )
+-- the line above will output "original called, 8", then "returned 14", then "14"
+```
