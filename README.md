@@ -42,11 +42,11 @@ Changes a function inside a table, example:
 local t = {}
 t.func = function(arg)
   print("original called,", arg)
-  return arg + 6
+  return arg + 10
 end
 
 print( t.func(4) )
--- the line above will output "original called, 4", then "10"
+-- the line above will output "original called, 4", then "14"
 
 MoonPlus.hookfunction(
   t, "func",
@@ -66,5 +66,5 @@ MoonPlus.hookfunction(
 )
 
 print( t.func(4) )
--- the line above will output "original called, 8", then "returned 14", then "14"
+-- the line above will output "original called, 8", then "returned 18", then "18"
 ```
