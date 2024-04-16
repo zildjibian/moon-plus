@@ -26,6 +26,6 @@ MoonPlus.hookfunction(
   method: any,
   hook: ( any ) -> any,
   hooktype: "before" | "after"
-)
+) -> any
 ```
 Changes a function inside a table.
