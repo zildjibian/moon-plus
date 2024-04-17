@@ -11,6 +11,10 @@ This also has premade mods, such as:
 
 # Scripting
 
+<a href="https://zildjibian.github.io/moon-plus/docs.html">
+ Moon Animator Documentation (unfinished
+</a>
+
 ```lua
 local _g = _G.MoonGlobal
 local MoonPlus = _g.MoonPlus
