@@ -23,7 +23,7 @@ If you wanna add your own mod, these are some functions that might help.<br><br>
 ```lua
 MoonPlus.wfv(
   index: any,
-  tbl: { any }
+  tbl: { any } -- Default = _g
 ) -> tbl[index] -- wfv = WaitForVariable
 ```
 Waits for a variable in a table.<br><br>
@@ -34,7 +34,7 @@ MoonPlus.hookfunction(
   tbl: { any },
   method: any,
   hook: ( any ) -> any,
-  hooktype: "before" | "after"
+  hooktype: "before" | "after" -- Default = "before"
 ) -> any
 ```
 Changes a function inside a table, example:
