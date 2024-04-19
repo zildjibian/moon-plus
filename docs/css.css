@@ -1,0 +1,95 @@
+body {
+	background-color: rgb(18, 22, 61);
+}
+
+a {
+	text-decoration: none;
+}
+
+p {
+	color: rgb(245, 245, 245);
+	font-family: 'Source Sans Pro', Arial, sans-serif;
+	margin: 0px;
+}
+
+.marker {
+	font-size: 50px;
+	font-weight: 900;
+}
+
+.mobject {
+	font-size: 35px;
+	font-weight: 900;
+}
+
+.mexpl {
+	font-size: 20px;
+	margin: 10px 0px 0px 0px;
+	font-weight: 900;
+}
+
+.mod {
+	color: rgb(200, 200, 245);
+	font-weight: 900;
+}
+
+.minher {
+	font-size: 14px;
+	margin: 0px;
+}
+
+
+
+/* everything under this line is made by chatgpt */
+
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+.parallax {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 99vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	perspective: 0px;
+}
+
+.parallax-bg {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 150%;
+	background-image: url('https://assetdelivery.roblox.com/v1/asset/?id=11869805803');
+	background-repeat: repeat-y;
+	background-position: center;
+	transform-origin: center center;
+	transform: translateZ(-2px) scale(10);
+}
+
+.parallax-content {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+	padding: 20px;
+	color: white;
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(52,161,218);
+	border-radius: 1.8px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgba(0,0,0,0)
+}
