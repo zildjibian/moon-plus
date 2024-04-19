@@ -56,7 +56,7 @@
 			.parallax {
 				margin: 0;
 				padding: 0;
-				width: 99.7%;
+				width: 100%;
 				height: 99vh;
 				overflow-x: hidden;
 				overflow-y: auto;
@@ -93,7 +93,7 @@
 
 			::-webkit-scrollbar-thumb {
 				background-color: rgb(52,161,218);
-				border-radius: 1px;
+				border-radius: 1.8px;
 			}
 
 			::-webkit-scrollbar-track {
@@ -114,7 +114,6 @@
 					<br>
 					
 					<p>_g.ver: number</p>
-					<p class="mod">_g.ver_patch: number</p><br>
 					
 					<p>_g.toolbar: PluginToolbar</p><br>
 					
@@ -171,7 +170,7 @@
 			
 				<div> <!-- Classes -->
 					<a class="marker" href="#Classes"><p id="Classes">Classes</p></a>
-					<p>These can be accesed using _g.req(className). The first class you required will be the "super" variable (superclass) in that ModuleScript.</p>
+					<p>These can be accesed using _g.req(className). When using that function, the first class you required will be the "super" variable (superclass) in that ModuleScript.</p>
 					<br>
 					
 					<div> <!-- Object -->
