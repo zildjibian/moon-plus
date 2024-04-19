@@ -3,7 +3,7 @@ Commands:
 	/object className (Template for Craeting Moon Animator Objects)
 	/expl text (Template for mexpl (i forgot what that is))
 	/inher className (Template for "Inherited From:")
-	/code code (creates a code snippet)
+	/code ``code`` (creates a code snippet)
 
 	/create ElementName (self explanatory)
 	/set PropertyName Value (self explanatory)
@@ -22,12 +22,7 @@ async function fetchData(url) {
 			throw new Error('Network response was not ok');
 		}
 		
-		var rdata = await response.text().then(data => {
-			if (data !== null) {
-				rdata = data;
-			}
-		});
-		return rdata;
+		return response.text();
 	} catch (error) {
 		console.error('Fetch request failed:', error);
 		
@@ -35,9 +30,13 @@ async function fetchData(url) {
 	}
 }
 
-var data = fetchData("https://raw.githubusercontent.com/zildjibian/moon-plus/main/docs/data");
+var data = "";
 
-// i cant even do HttpGet mane
+fetchData("https://raw.githubusercontent.com/zildjibian/moon-plus/main/docs/data").then(rdata => {
+	if (rdata !== null) {
+		data = rdata;
+	}
+}); // why does js has to be like this mane
 
 //
 
@@ -171,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 });
-
 
 
 
