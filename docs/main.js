@@ -17,12 +17,16 @@ Commands:
 
 async function fetchData(url) {
 	try {
-		const response = await fetch(url);
+		var response = await fetch(url);
 		if (!response.ok) {
 			throw new Error('Network response was not ok');
 		}
 		
-		const rdata = await response.text(); // Assuming response is JSON
+		var rdata = await response.text().then(data => {
+			if (data !== null) {
+				rdata = data;
+			}
+		});
 		return rdata;
 	} catch (error) {
 		console.error('Fetch request failed:', error);
@@ -31,13 +35,8 @@ async function fetchData(url) {
 	}
 }
 
-var data = "";
+var data = fetchData("https://raw.githubusercontent.com/zildjibian/moon-plus/main/docs/data");
 
-fetchData("https://raw.githubusercontent.com/zildjibian/moon-plus/main/docs/data").then(rdata => {
-		if (rdata !== null) {
-			data = rdata;
-		}
-	});
 // i cant even do HttpGet mane
 
 //
