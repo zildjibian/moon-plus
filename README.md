@@ -11,7 +11,7 @@ This also has premade mods, such as:
 
 # Scripting
 
-<a href="https://zildjibian.github.io/moon-plus/docs">
+<a href="https://zildjibian.github.io/moon-plus">
  Moon Animator Documentation (unfinished)
 </a><br><br>
 
