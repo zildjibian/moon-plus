@@ -1,4 +1,3 @@
-// Global Variables
 /sep globals
 /spf _g.
 ver: number
@@ -52,18 +51,15 @@ time_offset: number
 AllMenuItems: { MenuItem }
 
 NIL_VALUE: userdata
-
 /spf 
 insert more global variables here
 
 /sep classes
-/
-//////////////////////////
-/
 // Object
 /object Object
+/spf - Object.
 /expl Constructor
-- Object:new(create: any) -> Object
+new(create: any) -> Object
 
 /spf - Object.
 /expl Properties
@@ -76,19 +72,15 @@ Destroy() -> void
 AddPaintedItem(item: Instance, paintData: { property: any }) -> void
 RemovePaintedItem(item: Instance) -> void
 SetItemPaint(item: Instance, paintData: { property: any }, tweenTime: number) -> void
-/
-/p
-/
-//////////////////////////
-/
 
-/spf 
+/p
+/p
+
 // Ease
 /object Ease
-/inher Object
-
+/spf - Ease.
 /expl Constructor
-- Ease:new(ease_type: string, params: { any }) -> Ease
+new(ease_type: string, params: { any }) -> Ease
 
 /spf - Ease.
 /expl Properties
@@ -115,35 +107,28 @@ EASE_LIST: { { string (name), string (displayName) } }
 DIR_LIST: typeof(Ease.EASE_LIST)
 Detableize(ease_tbl: table(ease_tbl)) -> Ease
 Deserialize(ease_folder: Instance(ease_folder)) -> Ease
-/
-/p
-/
-//////////////////////////
-/
 
-/spf 
+/p
+/p
+
 // GuiElement
 /object GuiElement
-/inher Object
-
+/spf - GuiElement.
 /expl Constructor
-- GuiElement:new(UI: Instance) -> GuiElement
+new(UI: Instance) -> GuiElement
 
+/spf - GuiElement.
 /expl Properties
-- GuiElement.UI: Instance
-/
-/p
-/
-//////////////////////////
-/
+UI: Instance
 
-/spf 
+/p
+/p
+
 // Button
 /object Button
-/inher GuiElement
-
+/spf - Button.
 /expl Constructor
-- Button:new(UI: Instance) -> Button
+new(UI: Instance) -> Button
 
 /spf - Button.
 /expl Properties
@@ -154,20 +139,18 @@ highlight: boolean
 /expl Methods
 set_highlight(value: boolean) -> void
 SetActive(value: boolean) -> void
-/
-//////////////////////////
-/
 
-/spf 
+/p
+/p
+
 // CFrameInput
 /object CFrameInput
-/inher GuiElement
-
+/spf - CFrameInput.
 /expl Constructor
-- CFrameInput:new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> ()) -> CFrame
+new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> ()) -> CFrameInput
 
 /spf - CFrameInput.
-/Properties
+/expl Properties
 _changed: (value: CFrame, relative: boolean) -> void
 Value: CFrame
 Enabled: boolean
@@ -189,17 +172,119 @@ SetEnabled(value: boolean) -> void
 value_changed(ele: any) -> void
 Process(input: CFrame?) -> void
 Set(input: CFrame?, inputted: boolean, relative: boolean)
-/
-//////////////////////////
-/
 
-/spf 
+/p
+/p
+
+// Menu
+/object Menu
+/spf - Menu.
+/expl Constructor
+new(name: string) -> Menu
+
+/spf - Menu.
+/expl Properties
+_MenuItems: ObjectGroup
+_curOrder: number
+name: string
+UI: Instance
+ActiveMenuItem: MenuItem
+
+/spf - Menu:
+/expl Methods
+_MenuItemClick(MenuItem: MenuItem) -> void
+_AddMenuItem(MenuItem: MenuItem) -> void
+AddDivider() -> void
+size(parent: Instance) -> void
+Show(vec2pos: Vector2, parent: Instance) -> void
+Close() -> void
+
+/p
+/p
+
+// MenuBar
+/object MenuBar
+/spf - MenuBar.
+/expl Constructor
+new(UI: Instance) -> MenuBar
+MenuBarFactory(name, data) -> MenuBar
+
+/spf - MenuBar.
+/expl Properties
+_MenuBarButtons: ObjectGroup
+_curOrder: number
+name: string
+Window: Window
+UI: Instance
+ActiveMenuBarButton: MenuBarButton
+Enabled: boolean
+
+/spf - MenuBar:
+/expl Methods
+_MenuBarButtonClick(MenuBarButton: MenuBarButton) -> void
+_AddButton(MenuBarButton: MenuBarButton) -> void
+_Open(MenuBarButton: MenuBarButton) -> void
+Close() -> void
+SetEnabled(value: boolean, noTween: boolean?) -> void
+
+/p
+/p
+
+// MenuBarButton
+/object MenuBarButton
+/spf - MenuBarButton.
+/expl Constructor
+new(name: string, MenuBar: MenuBar, ButtonLabel: string) -> MenuBarButton
+
+/spf - MenuBarButton.
+/expl Properties
+name: string
+MenuBar: MenuBar
+UI: Instance
+main_color: string
+
+/spf - MenuBarButton:
+/expl Methods
+_HoverBegan(UI: any) -> void
+_HoverEnded(UI: any) -> void
+
+/p
+/p
+
+// MenuItem
+/object MenuItem
+/spf - MenuItem.
+/expl Constructor
+new(name: string, Menu: Menu, ItemLabel: string, extra: { NoClickOff: boolean?, IsToggle: boolean?, Price: boolean? }?) -> MenuItem
+
+/spf - MenuItem.
+/expl Properties
+name: string
+Menu: Menu
+left_ui: Instance
+middle_ui: Instance
+right_ui: Instance
+Disabled: boolean
+NoClickOff: boolean
+
+/spf - MenuItem:
+/expl Methods
+set_check(value: boolean) -> void
+_HoverBegan(UI: any) -> void
+_HoverEnded(UI: any) -> void
+_SetPrice(price: number) -> void
+_SetControl(keys: { string? }) -> void
+_AddMoreFrame() -> void
+_SetDisabled(value: boolean) -> void
+
+/p
+/p
+
 // ObjectGroup
 /object ObjectGroup
-/inher Object
-
+/spf - ObjectGroup.
 /expl Constructor
-- ObjectGroup:new(name: string) -> ObjectGroup
+new(name: string) -> ObjectGroup
 
 /spf - ObjectGroup.
 /expl Properties
@@ -221,19 +306,15 @@ Clear() -> void
 IndexOf(Object: Object) -> void
 Iterate(func: (object: Object, objectGroup: ObjectGroup) -> boolean?, object_filter: string?) -> void
 Contains(Object: Object) -> boolean
-/
-/p
-/
-//////////////////////////
-/
 
-/spf 
+/p
+/p
+
 // Path
 /object Path
-/inher Object
-
+/spf - Path.
 /expl Constructor
-- Path:new(Item: Instance) -> Path
+new(Item: Instance) -> Path
 
 /spf - Path.
 /expl Properties
@@ -254,5 +335,6 @@ Deserialize(tbl: {ItemType: string, InstanceNames: {string}, InstanceTypes: {str
 GetPath(Item: Instance) -> string, string, {string}, {string}
 ParsePath(ItemType: string, InstanceNames: {string}, InstanceTypes: {string}) -> Instance
 CheckIfUnique(Item: Instance) -> boolean
-/
+
+/p
 /p
