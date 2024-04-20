@@ -32,7 +32,7 @@ async function fetchData(url) {
 
 var data = "";
 
-fetchData("https://raw.githubusercontent.com/zildjibian/moon-plus/main/docs/data").then(rdata => {
+fetchData("data").then(rdata => {
 	if (rdata !== null) {
 		data = rdata;
 	}
