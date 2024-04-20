@@ -72,103 +72,101 @@ function getargs(cmd, maxargs) {
 	return [args.join(' '), restOfLines]
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-	setTimeout(function(){
-		data.split("\n").forEach(line => {
-			if (line[0] === "/") {
-				const args = line.split(" ");
+setTimeout(function(){
+	data.split("\n").forEach(line => {
+		if (line[0] === "/") {
+			const args = line.split(" ");
+			
+			if (args[0] == "/") { return }
+			
+			switch(args[0]) {
+				case "/object":
+					var cn = args[1];
 				
-				if (args[0] == "/") { return }
-				
-				switch(args[0]) {
-					case "/object":
-						var cn = args[1];
+					var div = document.createElement("div");
+					parent.appendChild(div);
 					
-						var div = document.createElement("div");
-						parent.appendChild(div);
-						
-						var a = document.createElement("a");
-						a.className = "mobject";
-						a.href = "#c." + cn
-						div.appendChild(a);
-						parent = a;
-						
-						text(cn);
-						prevElement.id = "c." + cn
-						
-						parent = div;
-						prevElement = div;
-						
-						break
-					case "/expl":
-						text(args[1]);
-						prevElement.className = "mexpl";
-						
-						break
-					case "/inher":
-						var cn = args[1];
-						var div = parent;
-						
-						text("Inherited From:");
-						
-						var a = document.createElement("a");
-						a.className = "minher";
-						a.href = "#c." + cn
-						div.appendChild(a);
-						parent = a;
-						
-						text("- " + cn);
-						
-						a.addEventListener('click', function(event) {
-							event.preventDefault();
-							document.getElementById("c." + cn).scrollIntoView();
-						});
-						
-						parent = div;
-						prevElement = div;
-						
-						break
-						
-					case "/create":
-						if (parent) {
-							var element = document.createElement(args[1]);
-							parent.appendChild(element);
-							parent = element;
-							prevElement = element;
-						}
-						
-						break
-					case "/set":
-						if (prevElement) {
-							prevElement[args[1]] = args[2];
-						}
-						
-						break
+					var a = document.createElement("a");
+					a.className = "mobject";
+					a.href = "#c." + cn
+					div.appendChild(a);
+					parent = a;
 					
-					case "/sep":
-						parent = document.getElementById(args[1]);
+					text(cn);
+					prevElement.id = "c." + cn
+					
+					parent = div;
+					prevElement = div;
+					
+					break
+				case "/expl":
+					text(args[1]);
+					prevElement.className = "mexpl";
+					
+					break
+				case "/inher":
+					var cn = args[1];
+					var div = parent;
+					
+					text("Inherited From:");
+					
+					var a = document.createElement("a");
+					a.className = "minher";
+					a.href = "#c." + cn
+					div.appendChild(a);
+					parent = a;
+					
+					text("- " + cn);
+					
+					a.addEventListener('click', function(event) {
+						event.preventDefault();
+						document.getElementById("c." + cn).scrollIntoView();
+					});
+					
+					parent = div;
+					prevElement = div;
+					
+					break
+					
+				case "/create":
+					if (parent) {
+						var element = document.createElement(args[1]);
+						parent.appendChild(element);
+						parent = element;
 						prevElement = element;
-						break
-					case "/spf":
-						prefix = getargs(line, 1)[1];
-						break
+					}
 					
-					case "/p":
-						if (prevElement) {
-							parent = prevElement.parentElement;
-							prevElement = parent;
-						}
-						
-						break
-				}
+					break
+				case "/set":
+					if (prevElement) {
+						prevElement[args[1]] = args[2];
+					}
+					
+					break
 				
-			} else {
-				if (line == "") {
-					nextline();
-				} else {
-					text(prefix + line)
-				}
+				case "/sep":
+					parent = document.getElementById(args[1]);
+					prevElement = element;
+					break
+				case "/spf":
+					prefix = getargs(line, 1)[1];
+					break
+				
+				case "/p":
+					if (prevElement) {
+						parent = prevElement.parentElement;
+						prevElement = parent;
+					}
+					
+					break
 			}
-		});
-	}, 1000);
-});
+			
+		} else {
+			if (line == "") {
+				nextline();
+			} else {
+				text(prefix + line)
+			}
+		}
+	});
+}, 1562);
