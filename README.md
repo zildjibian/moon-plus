@@ -72,3 +72,38 @@ MoonPlus.hookfunction(
 print( t.func(4) )
 -- the line above will output "original called, 8", then "returned 18", then "18"
 ```
+# Example Mod
+This Mod shows a popup when opening Moon Animator
+```lua
+local _g = _G.MoonGlobal
+local MoonPlus = _g.MoonPlus
+
+-- wait for MoonPlus to load
+repeat MoonPlus = _g.MoonPlus wait() until MoonPlus
+
+local once = false
+
+-- hook _g.Windows.MoonAnimator.OnOpen
+MoonPlus.hookfunction(
+  _g.Windows.MoonAnimator, "OnOpen",
+  function(pass)
+    if not once then
+      once = true
+      -- add a delay so it doesn't break
+      delay(0.1, function()
+        -- shows the popup
+        _g.Windows.MsgBox.Popup(_g.Windows.MoonAnimator,
+          {
+            Title = "Example Mod", 
+            Content = "Hello world!",
+            Button1 = {"ok", _g.BLANK_FUNC},
+            Button2 = {"cool", _g.BLANK_FUNC}
+          })
+      end)
+    end
+    
+    return pass
+  end,
+  'after'
+)
+```
