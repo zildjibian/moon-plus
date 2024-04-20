@@ -58,6 +58,8 @@ insert more global variables here
 
 /sep classes
 /
+//////////////////////////
+/
 // Object
 /object Object
 /expl Constructor
@@ -76,6 +78,9 @@ RemovePaintedItem(item: Instance) -> void
 SetItemPaint(item: Instance, paintData: { property: any }, tweenTime: number) -> void
 /
 /p
+/
+//////////////////////////
+/
 
 /spf 
 // Ease
@@ -112,6 +117,9 @@ Detableize(ease_tbl: table(ease_tbl)) -> Ease
 Deserialize(ease_folder: Instance(ease_folder)) -> Ease
 /
 /p
+/
+//////////////////////////
+/
 
 /spf 
 // GuiElement
@@ -125,8 +133,67 @@ Deserialize(ease_folder: Instance(ease_folder)) -> Ease
 - GuiElement.UI: Instance
 /
 /p
+/
+//////////////////////////
+/
 
-/spf
+/spf 
+// Button
+/object Button
+/inher GuiElement
+
+/expl Constructor
+- Button:new(UI: Instance) -> Button
+
+/spf - Button.
+/expl Properties
+OnClick: () -> void
+highlight: boolean
+
+/spf - Button:
+/expl Methods
+set_highlight(value: boolean) -> void
+SetActive(value: boolean) -> void
+/
+//////////////////////////
+/
+
+/spf 
+// CFrameInput
+/object CFrameInput
+/inher GuiElement
+
+/expl Constructor
+- CFrameInput:new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> ()) -> CFrame
+
+/spf - CFrameInput.
+/Properties
+_changed: (value: CFrame, relative: boolean) -> void
+Value: CFrame
+Enabled: boolean
+
+X: NumberInput
+Y: NumberInput
+Z: NumberInput
+AngleX: AngleInput
+AngleY: AngleInput
+AngleZ: AngleInput
+
+CopyAngle: Button
+CopyPos: Button
+CopyBoth: Button
+
+/spf - CFrameInput:
+/expl Methods
+SetEnabled(value: boolean) -> void
+value_changed(ele: any) -> void
+Process(input: CFrame?) -> void
+Set(input: CFrame?, inputted: boolean, relative: boolean)
+/
+//////////////////////////
+/
+
+/spf 
 // ObjectGroup
 /object ObjectGroup
 /inher Object
@@ -156,6 +223,9 @@ Iterate(func: (object: Object, objectGroup: ObjectGroup) -> boolean?, object_fil
 Contains(Object: Object) -> boolean
 /
 /p
+/
+//////////////////////////
+/
 
 /spf 
 // Path
