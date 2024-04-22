@@ -18,6 +18,14 @@ This also has premade mods, such as:
 ```lua
 local _g = _G.MoonGlobal
 local MoonPlus = _g.MoonPlus
+
+type HookTable = {
+  orig =  function,
+  hooked = function,
+
+  before = { function },
+		after = { function }
+}
 ```
 
 ## Functions
@@ -39,7 +47,7 @@ MoonPlus.hookfunction(
   method: any,
   hook: ( any ) -> any,
   hooktype: "before" | "after" -- Default = "before"
-) -> any
+) -> HookTable
 ```
 Changes a function inside a table, example:
 ```lua
@@ -72,6 +80,11 @@ MoonPlus.hookfunction(
 print( t.func(4) )
 -- the line above will output "original called, 8", then "returned 18", then "18"
 ```
+### MoonPlus.gethooktable()
+```lua
+MoonPlus.gethooktable( hooked: function ) -> HookTable
+```
+Gets a HookTable from a hooked function.
 # Example Mod
 This Mod shows a popup when opening Moon Animator
 ```lua
