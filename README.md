@@ -24,7 +24,7 @@ type HookTable = {
   hooked = function,
 
   before = { function },
-		after = { function }
+  after = { function }
 }
 ```
 
