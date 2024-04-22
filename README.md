@@ -82,9 +82,9 @@ print( t.func(4) )
 ```
 ### MoonPlus.gethooktable()
 ```lua
-MoonPlus.gethooktable( hooked: function ) -> HookTable
+MoonPlus.gethooktable( hooked: function ) -> HookTable?
 ```
-Gets a HookTable from a hooked function.
+Gets a HookTable from a hooked function, returns nil if it is not a hooked function.
 # Example Mod
 This Mod shows a popup when opening Moon Animator
 ```lua
