@@ -57,9 +57,9 @@ insert more global variables here
 /sep classes
 // Object
 /object Object
-/spf - Object.
+/spf - Object
 /expl Constructor
-new(create: any) -> Object
+:new(create: any) -> Object
 
 /spf - Object.
 /expl Properties
@@ -80,9 +80,9 @@ SetItemPaint(item: Instance, paintData: { property: any }, tweenTime: number) ->
 /object Ease
 /inher Object
 
-/spf - Ease.
+/spf - Ease
 /expl Constructor
-new(ease_type: string, params: { any }) -> Ease
+:new(ease_type: string, params: { any }) -> Ease
 
 /spf - Ease.
 /expl Properties
@@ -117,9 +117,9 @@ Deserialize(ease_folder: Instance(ease_folder)) -> Ease
 /object GuiElement
 /inher Object
 
-/spf - GuiElement.
+/spf - GuiElement
 /expl Constructor
-new(UI: Instance) -> GuiElement
+:new(UI: Instance) -> GuiElement
 
 /spf - GuiElement.
 /expl Properties
@@ -132,9 +132,9 @@ UI: Instance
 /object Button
 /inher GuiElement
 
-/spf - Button.
+/spf - Button
 /expl Constructor
-new(UI: Instance) -> Button
+:new(UI: Instance) -> Button
 
 /spf - Button.
 /expl Properties
@@ -153,9 +153,9 @@ SetActive(value: boolean) -> void
 /object CFrameInput
 /inher GuiElement
 
-/spf - CFrameInput.
+/spf - CFrameInput
 /expl Constructor
-new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> void) -> CFrameInput
+:new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> void) -> CFrameInput
 
 /spf - CFrameInput.
 /expl Properties
@@ -188,9 +188,9 @@ Set(input: CFrame?, inputted: boolean, relative: boolean)
 /object Menu
 /inher Object
 
-/spf - Menu.
+/spf - Menu
 /expl Constructor
-new(name: string) -> Menu
+:new(name: string) -> Menu
 
 /spf - Menu.
 /expl Properties
@@ -216,10 +216,10 @@ Close() -> void
 /object MenuBar
 /inher Object
 
-/spf - MenuBar.
+/spf - MenuBar
 /expl Constructor
-new(UI: Instance) -> MenuBar
-MenuBarFactory(name, data) -> MenuBar
+:new(UI: Instance) -> MenuBar
+.MenuBarFactory(name, data) -> MenuBar
 
 /spf - MenuBar.
 /expl Properties
@@ -246,9 +246,9 @@ SetEnabled(value: boolean, noTween: boolean?) -> void
 /object MenuBarButton
 /inher Object
 
-/spf - MenuBarButton.
+/spf - MenuBarButton
 /expl Constructor
-new(name: string, MenuBar: MenuBar, ButtonLabel: string) -> MenuBarButton
+:new(name: string, MenuBar: MenuBar, ButtonLabel: string) -> MenuBarButton
 
 /spf - MenuBarButton.
 /expl Properties
@@ -269,9 +269,9 @@ _HoverEnded(UI: any) -> void
 /object MenuItem
 /inher Object
 
-/spf - MenuItem.
+/spf - MenuItem
 /expl Constructor
-new(name: string, Menu: Menu, ItemLabel: string, extra: { NoClickOff: boolean?, IsToggle: boolean?, Price: boolean? }?) -> MenuItem
+:new(name: string, Menu: Menu, ItemLabel: string, extra: { NoClickOff: boolean?, IsToggle: boolean?, Price: boolean? }?) -> MenuItem
 
 /spf - MenuItem.
 /expl Properties
@@ -300,9 +300,9 @@ _SetDisabled(value: boolean) -> void
 /object ObjectGroup
 /inher Object
 
-/spf - ObjectGroup.
+/spf - ObjectGroup
 /expl Constructor
-new(name: string) -> ObjectGroup
+:new(name: string) -> ObjectGroup
 
 /spf - ObjectGroup.
 /expl Properties
@@ -332,9 +332,9 @@ Contains(Object: Object) -> boolean
 /object Path
 /inher Object
 
-/spf - Path.
+/spf - Path
 /expl Constructor
-new(Item: Instance) -> Path
+:new(Item: Instance) -> Path
 
 /spf - Path.
 /expl Properties
@@ -363,9 +363,9 @@ CheckIfUnique(Item: Instance) -> boolean
 /object TrackItem
 /inher Object
 
-/spf - TrackItem.
+/spf - TrackItem
 /expl Constructor
-newnew(UI: Instance, width: number, frm_pos: number) -> TrackItem
+:newnew(UI: Instance, width: number, frm_pos: number) -> TrackItem
 
 /spf - TrackItem.
 /expl Properties
@@ -394,11 +394,11 @@ _Size(width: number) -> void
 /object Keyframe
 /inher TrackItem
 
-/spf - Keyframe.
+/spf - Keyframe
 /expl Constructor
-new(frm_pos: number, Values: {any}, Eases: { Ease }) -> Keyframe
-Detableize(kf_tbl: {_tblType: "Keyframe", frm_pos: number, EaseMap: { typeof(Ease:Tableize()) }, TargetValues: { any } width: number}) -> Keyframe
-Deserialize(kf_folder: Instance) -> Keyframe
+:new(frm_pos: number, Values: {any}, Eases: { Ease }) -> Keyframe
+.Detableize(kf_tbl: {_tblType: "Keyframe", frm_pos: number, EaseMap: { typeof(Ease:Tableize()) }, TargetValues: { any } width: number}) -> Keyframe
+.Deserialize(kf_folder: Instance) -> Keyframe
 
 /spf - Keyframe.
 /expl Properties
@@ -433,6 +433,129 @@ _UpdateAppearance(ease_colored: boolean?) -> void
 // Marker
 /object Marker
 /inher TrackItem
+
+/spf - Marker
+/expl Constructor
+:new(frm_pos: number) -> Marker
+.Detableize(markerTbl: {_tblType: "Marker", frm_pos: number, name: string, width: string, codeBegin: string?, codeEnd: string?, KFMarkers: { {string, any} }?}) -> Marker
+.Deserialize(markerFolder:Instance) -> Marker
+
+/spf - Marker.
+/expl Properties
+name: string
+codeBegin: string
+codeEnd: string
+KFMarkers: { {string, value} }
+
+/spf - Marker:
+/expl Methods
+Tableize() -> {_tblType: "Marker", frm_pos: number, name: string, width: string, codeBegin: string?, codeEnd: string?, KFMarkers: { {string, any} }?}
+Serialize() -> Instance
+
+/p
+/p
+
+// Window
+/object Window
+/inher Object
+
+/spf - Window
+/expl Constructor
+:new(name: string, WindowData: WindowData) -> Window
+
+/spf - Window.
+/expl Properties
+name: string
+WindowData: WindowData
+UI: Instance
+Contents: Instance
+TitleBarSize: number
+g_e: { GuiElement } -- formerly Window.GuiElements
+MenuBar: MenuBar?
+_position_set: boolean
+
+ChildModal: Window
+ModalParent: Window
+
+PaletteWindows: { Window } -- Unused
+PaletteParent: Window -- Unused
+
+Visible: boolean
+Focused: boolean
+
+OnClose: ( args ) -> boolean
+OnOpen: ( args ) -> boolean
+OnModalOpen: ( args ) -> boolean
+OnFocusLost: ( args ) -> boolean
+OnFocusGained: ( args ) -> boolean
+OnMouseDown: () -> void
+
+MouseDownCon: RBXScriptConnection?
+SelChangedCon: RBXScriptConnection?
+DeactiveCon: RBXScriptConnection?
+
+MouseEnabled: boolean
+NeedsMouse: boolean
+
+ScreenGui: Instance
+UI: Instance
+
+/spf - Window:
+/expl Methods
+SetTitle(title: string) -> void
+
+GetSavedValue(key: string, default: any) -> any
+SaveValue(key: string, value: any) -> boolean
+
+Open(args: any) -> boolean
+OpenModal(Modal: Window, args: any) -> boolean
+Close(args: any) -> boolean
+Toggle(args: any) -> boolean
+
+SetHidden(value: boolean) -> void
+
+CaptureMouse() -> void
+ReleaseMouse(next_window: Window) -> void
+SetMouseEnabled(value: boolean) -> void
+
+GetFocus() -> void
+ReleaseFocus(next_window: Window) -> void
+
+_MorphWindowBasedOnFocus(focus: boolean) -> void
+
+WindowDragBegin(titleBar: Instance, ini_pos: any) -> void
+WindowDragChanged(titleBar: Instance, changed: Vector2) -> void
+WindowDragEnded(titleBar: Instance) -> void -- unimplemented
+
+SetSize(x: number, y: number) -> void
+
+ResizeHoverBegan(sizer: Instance) -> void
+ResizeHoverEnded(sizer: Instance?) -> void
+
+ResizeBegan(sizer: Instance) -> void
+ResizeChanged(sizer: Instance, changed: Vector2) -> void
+ResizeEnded(sizer: Instance) -> void
+
+/p
+/p
+
+// WindowData
+/object WindowData
+/inher Object
+
+/spf - WindowData
+/expl Constructor
+:new(title: string, Contents: Instance) -> WindowData
+
+/spf - WindowData.
+/expl Properties
+title: string
+img: boolean?
+Buttons: {Close: boolean, SmallClose: nil, Hide: nil, Max: nil} -- nil = unimplemented
+Contents: Instance
+MenuBar: MenuBar?
+IsPalette: boolean -- unimplemented
+NeedsMouse: boolean
 
 /p
 /p
