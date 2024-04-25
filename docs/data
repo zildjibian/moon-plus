@@ -78,6 +78,8 @@ SetItemPaint(item: Instance, paintData: { property: any }, tweenTime: number) ->
 
 // Ease
 /object Ease
+/inher Object
+
 /spf - Ease.
 /expl Constructor
 new(ease_type: string, params: { any }) -> Ease
@@ -113,6 +115,8 @@ Deserialize(ease_folder: Instance(ease_folder)) -> Ease
 
 // GuiElement
 /object GuiElement
+/inher Object
+
 /spf - GuiElement.
 /expl Constructor
 new(UI: Instance) -> GuiElement
@@ -126,6 +130,8 @@ UI: Instance
 
 // Button
 /object Button
+/inher GuiElement
+
 /spf - Button.
 /expl Constructor
 new(UI: Instance) -> Button
@@ -145,9 +151,11 @@ SetActive(value: boolean) -> void
 
 // CFrameInput
 /object CFrameInput
+/inher GuiElement
+
 /spf - CFrameInput.
 /expl Constructor
-new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> ()) -> CFrameInput
+new(UI: Instance, default: CFrame, changed: (value: CFrame, relative: boolean) -> void) -> CFrameInput
 
 /spf - CFrameInput.
 /expl Properties
@@ -178,6 +186,8 @@ Set(input: CFrame?, inputted: boolean, relative: boolean)
 
 // Menu
 /object Menu
+/inher Object
+
 /spf - Menu.
 /expl Constructor
 new(name: string) -> Menu
@@ -204,6 +214,8 @@ Close() -> void
 
 // MenuBar
 /object MenuBar
+/inher Object
+
 /spf - MenuBar.
 /expl Constructor
 new(UI: Instance) -> MenuBar
@@ -232,6 +244,8 @@ SetEnabled(value: boolean, noTween: boolean?) -> void
 
 // MenuBarButton
 /object MenuBarButton
+/inher Object
+
 /spf - MenuBarButton.
 /expl Constructor
 new(name: string, MenuBar: MenuBar, ButtonLabel: string) -> MenuBarButton
@@ -253,6 +267,8 @@ _HoverEnded(UI: any) -> void
 
 // MenuItem
 /object MenuItem
+/inher Object
+
 /spf - MenuItem.
 /expl Constructor
 new(name: string, Menu: Menu, ItemLabel: string, extra: { NoClickOff: boolean?, IsToggle: boolean?, Price: boolean? }?) -> MenuItem
@@ -282,6 +298,8 @@ _SetDisabled(value: boolean) -> void
 
 // ObjectGroup
 /object ObjectGroup
+/inher Object
+
 /spf - ObjectGroup.
 /expl Constructor
 new(name: string) -> ObjectGroup
@@ -312,6 +330,8 @@ Contains(Object: Object) -> boolean
 
 // Path
 /object Path
+/inher Object
+
 /spf - Path.
 /expl Constructor
 new(Item: Instance) -> Path
@@ -335,6 +355,84 @@ Deserialize(tbl: {ItemType: string, InstanceNames: {string}, InstanceTypes: {str
 GetPath(Item: Instance) -> string, string, {string}, {string}
 ParsePath(ItemType: string, InstanceNames: {string}, InstanceTypes: {string}) -> Instance
 CheckIfUnique(Item: Instance) -> boolean
+
+/p
+/p
+
+// TrackItem
+/object TrackItem
+/inher Object
+
+/spf - TrackItem.
+/expl Constructor
+newnew(UI: Instance, width: number, frm_pos: number) -> TrackItem
+
+/spf - TrackItem.
+/expl Properties
+UI: Instance
+ParentTrack: Track
+width: number
+frm_pos: number
+selected: boolean
+
+LayerSystem: LayerSystem
+SelectionHandler: SelectionHandler
+SelectedTrackItems: ObjectGroup
+
+_reg: boolean
+
+/spf - TrackItem:
+/expl Methods
+_SetSelect(value: boolean) -> void
+_Position(frm_pos: number) -> void
+_Size(width: number) -> void
+
+/p
+/p
+
+// Keyframe
+/object Keyframe
+/inher TrackItem
+
+/spf - Keyframe.
+/expl Constructor
+new(frm_pos: number, Values: {any}, Eases: { Ease }) -> Keyframe
+Detableize(kf_tbl: {_tblType: "Keyframe", frm_pos: number, EaseMap: { typeof(Ease:Tableize()) }, TargetValues: { any } width: number}) -> Keyframe
+Deserialize(kf_folder: Instance) -> Keyframe
+
+/spf - Keyframe.
+/expl Properties
+TargetValues: { any }
+value_count: number
+
+width: boolean
+group: boolean
+
+EaseMap: { Ease }
+is_linear: boolean
+is_constant: boolean
+ease_colored: boolean
+
+/spf - Keyframe:
+/expl Methods
+Tableize() -> {_tblType: "Keyframe", frm_pos: number, EaseMap: { typeof(Ease:Tableize()) }, TargetValues: { any } width: number}
+Serialize() -> Instance
+
+IterateTargetValues(func: (pos: number, value: any, ease: Ease, actPos: number) -> void) -> void
+GetTargetValue() -> any
+SetTargetValue(TargetValue) -> void
+
+GetEase() -> Ease
+SetEase(Ease) -> void
+
+_UpdateAppearance(ease_colored: boolean?) -> void
+
+/p
+/p
+
+// Marker
+/object Marker
+/inher TrackItem
 
 /p
 /p
