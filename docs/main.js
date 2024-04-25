@@ -59,20 +59,27 @@ function text(txt) {
 	}
 }
 
-function getargs(cmd, maxargs) {
-	var lines = cmd.split(' ');
+function split(str, splitter, limit) {
+	var lines = str.split(splitter);
 
 	var args = []
 
-	for (let i = 0; i < maxargs; i++) {
+	for (let i = 0; i < limit && i < lines.length; i++) {
 		args.push(lines.shift());
 	}
 	var restOfLines = lines.join(' ');
+	if (restOfLines.length > 0) { args.push(restOfLines) }
+	
+	return args;
+}
 
-	return [args.join(' '), restOfLines]
+function getargs(cmd, maxargs) {
+	return split(cmd, " ", maxargs);
 }
 
 setTimeout(function(){
+	var thing = split(document.location.href, "#", 2);
+	
 	data.split("\n").forEach(line => {
 		if (line[0] === "/") {
 			const args = line.split(" ");
@@ -89,6 +96,10 @@ setTimeout(function(){
 					var a = document.createElement("a");
 					a.className = "mobject";
 					a.href = "#c." + cn
+					a.addEventListener("click", (event) => {
+					  document.location.href = thing[0] + "#c." + cn
+					})	
+					
 					div.appendChild(a);
 					parent = a;
 					
@@ -113,6 +124,10 @@ setTimeout(function(){
 					var a = document.createElement("a");
 					a.className = "minher";
 					a.href = "#c." + cn
+					a.addEventListener("click", (event) => {
+					  document.location.href = thing[0] + "#c." + cn
+					})
+					
 					div.appendChild(a);
 					parent = a;
 					
@@ -169,4 +184,9 @@ setTimeout(function(){
 			}
 		}
 	});
-}, 1562);
+	
+	var targetElement = document.getElementById(thing[1]);
+	if (targetElement !== null) {
+		targetElement.scrollIntoView();
+	}
+}, 1000);
