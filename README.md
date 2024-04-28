@@ -10,6 +10,10 @@ This also has premade mods, such as:
  - UI Support (use SurfaceGUI)
 <br><br>
 
+## Support Moon Animator!
+- <a href="https://www.patreon.com/moonanimator">Patreon</a>
+- <a href="https://create.roblox.com/store/plugins?creatorName=xsixx">Moon Animator Themes</a><br><br>
+
 # Scripting
 
 <a href="https://zildjibian.github.io/moon-plus">
