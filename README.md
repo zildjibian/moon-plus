@@ -7,7 +7,7 @@ This also has premade mods, such as:
  - Bézier Easing
  - Catalog / Accessory Inserter
  - Outfit Loader
- - UI Support (use SurfaceGUI)
+ - UI Support
 <br><br>
 
 ## Support Moon Animator!
