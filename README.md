@@ -23,14 +23,6 @@ This also has premade mods, such as:
 ```lua
 local _g = _G.MoonGlobal
 local MoonPlus = _g.MoonPlus
-
-type HookTable = {
-  orig =  function,
-  hooked = function,
-
-  before = { function },
-  after = { function }
-}
 ```
 
 ## Functions
@@ -45,8 +37,42 @@ MoonPlus.wfv(
 ```
 Waits for a variable in a table.<br><br>
 
+### MoonPlus.NewSignal()
+```lua
+MoonPlus.NewSignal(
+  name: string?
+) -> Signal -- equals to _g.class.Signal:new(name)
+```
+Creates a Signal, example:
+```lua
+local Signal = MoonPlus.NewSignal("Example")
+
+Signal:Connect(function(a1, a2)
+  print(a1 * a2)
+end)
+
+Signal:Once(function(a1, a2)
+  print(a1 + a2)
+end)
+
+Signal:Fire(25, 5) -- prints "125" then "30"
+Signal:Fire(4, 9) -- prints "36"
+
+-- Other Functions:
+--   Signal:Wait()
+--   Signal:Destroy()
+```
+
 ### MoonPlus.hookfunction()
 ```lua
+type HookTable = {
+  orig =  function,
+  hooked = function,
+
+  before = { function },
+  after = { function }
+}
+
 MoonPlus.hookfunction(
   tbl: { any },
   method: any,
@@ -63,7 +89,7 @@ t.func = function(arg)
 end
 
 print( t.func(4) )
--- the line above will output "original called, 4", then "14"
+-- the line above will print "original called, 4", then "14"
 
 MoonPlus.hookfunction(
   t, "func",
@@ -83,7 +109,7 @@ MoonPlus.hookfunction(
 )
 
 print( t.func(4) )
--- the line above will output "original called, 8", then "returned 18", then "18"
+-- the line above will print "original called, 8", then "returned 18", then "18"
 ```
 ### MoonPlus.gethooktable()
 ```lua
