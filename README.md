@@ -1,6 +1,8 @@
 # MoonPlus
 A Roblox plugin that allows you to mod Moon Animator 2.<br><br>
 
+<b><a href="https://create.roblox.com/store/asset/17171181036/MoonPlus">Download</a></b><br><br>
+
 This also has premade mods, such as:
  - Autosave (Configurable)
  - <a href="https://youtu.be/9lsvWiSNLZ0">Audio Support</a>
