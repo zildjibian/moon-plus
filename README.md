@@ -118,6 +118,17 @@ print( t.func(4) )
 MoonPlus.gethooktable( hooked: function ) -> HookTable?
 ```
 Gets a HookTable from a hooked function, returns nil if it is not a hooked function.
+## Signals
+imitates RBXScriptSignal
+```lua
+local Signals = MoonPlus.Signals
+
+-- .Updated
+Signals.Updated:Connect(function(frame)
+  print(frame)
+end)
+-- fires everytime the animator changes keyframe
+```
 # Example Mod
 This Mod shows a popup when opening Moon Animator
 ```lua
