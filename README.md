@@ -124,10 +124,16 @@ imitates RBXScriptSignal
 local Signals = MoonPlus.Signals
 
 -- .Updated
-Signals.Updated:Connect(function(frame)
+Signals.Updated:Connect(function(frame) -- frame: number
   print(frame)
 end)
 -- fires everytime the animator changes keyframe
+
+-- .FileOpened
+Signals.FileOpened:Connect(function(file) -- file: StringValue
+  print(file)
+end)
+-- fires everytime you open a file
 ```
 # Example Mod
 This Mod shows a popup when opening Moon Animator
