@@ -43,7 +43,7 @@ Waits for a variable in a table.<br><br>
 ```lua
 MoonPlus.NewSignal(
   name: string?
-) -> Signal -- equals to _g.class.Signal:new(name)
+) -> Signal -- equals to require(_g.class.Signal):new(name)
 ```
 Creates a Signal, example:
 ```lua
