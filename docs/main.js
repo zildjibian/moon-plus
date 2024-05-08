@@ -164,7 +164,7 @@ setTimeout(function(){
 					prevElement = element;
 					break
 				case "/spf":
-					prefix = getargs(line, 1)[1];
+					prefix = getargs(line, 1)[1] || "";
 					break
 				
 				case "/p":
